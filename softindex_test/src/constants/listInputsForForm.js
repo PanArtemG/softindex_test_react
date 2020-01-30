@@ -13,10 +13,10 @@ export const listInputs = [
     },
     {
         title: 'Gender',
-        type: Boolean
+        type: 'text'
     },
     {
         title: 'Age',
-        type: Number
+        type: 'number'
     },
 ];

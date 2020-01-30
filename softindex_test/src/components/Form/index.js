@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {listInputs} from '../../constants/listInputsForForm.js'
-import {Input} from "../Input";
+import {Input, Button} from "../index";
 
 export const Form = () => {
     return (
@@ -15,7 +15,7 @@ export const Form = () => {
                     )
                 })
             }
-
+            <Button/>
         </form>
     );
 };
