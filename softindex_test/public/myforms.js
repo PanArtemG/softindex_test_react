@@ -5,15 +5,12 @@
 // import {listInputs, DB,} from '../../constants'
 // import {validationSchema} from '../../shema'
 //
-// export const FormWrap = () => {
-//
+// export const FormBlock = () => {
 //
 //     const submit = values => {
 //         DB.push(values);
 //         console.log(DB);
-//         console.log(values);
 //     };
-//
 //
 //     return (
 //         <Formik
@@ -24,10 +21,7 @@
 //                 gender: '',
 //                 age: ''
 //             }}
-//             onSubmit={values => {
-//                 submit(values)
-//             }
-//             }
+//             onSubmit={values => submit(values)}
 //             validationSchema={validationSchema}
 //         >
 //             {({errors, touched}) => (
@@ -74,7 +68,7 @@
 //                             as="select"
 //                             className="form-control"
 //                             id='genderExampleInput'>
-//                             <option value="">Select</option>
+//                             <option value="">Select your gender</option>
 //                             <option value="Men">Men</option>
 //                             <option value="Woman">Woman</option>
 //                         </Field>

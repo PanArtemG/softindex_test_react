@@ -2,34 +2,44 @@ import React from 'react';
 import {Formik, Form, Field} from 'formik';
 
 import {Button} from "../index";
-import {listInputs, DB,} from '../../constants'
+import {DB} from '../../constants'
 import {validationSchema} from '../../shema'
 
-export const FormWrap = () => {
+import './index.scss'
+
+export const FormBlock = () => {
+
 
     const submit = values => {
         DB.push(values);
-        console.log(DB);
-        console.log(values);
+        // console.log(DB);
+        const json = JSON.stringify(DB);
+        localStorage.setItem('DataBase', json)
     };
+
+    const resetForm = () => document.getElementById("exampleForm").reset();
 
     return (
         <Formik
             initialValues={{
                 firstName: '',
-                lastName: '',
-                phone: '',
-                gender: '',
-                age: ''
+                lastName: 'Pan',
+                phone: '777 77 777',
+                gender: 'Men',
+                age: 30
             }}
-            onSubmit={values => submit(values)}
+            onSubmit={(values, actions) => {
+                submit(values);
+                resetForm()
+            }}
             validationSchema={validationSchema}
+
         >
             {({errors, touched}) => (
 
-                <Form>
-                    <h1>FORM</h1>
-                    <div className="form-group">
+                <Form id='exampleForm' className='form-wrap w-50 p-3 d-flex flex-md-column justify-content-center align-items-center text-center'>
+                    <h1 className='mb-5' >Welcome!</h1>
+                    <div className="form-group w-100">
                         <label htmlFor='firstNameExampleInput'>First Name</label>
                         <Field
                             name='firstName'
@@ -40,7 +50,7 @@ export const FormWrap = () => {
                             <small className="form-text text-danger">{errors.firstName}</small>
                         )}
                     </div>
-                    <div className="form-group">
+                    <div className="form-group w-100">
                         <label htmlFor='lastNameExampleInput'>Last Name</label>
                         <Field
                             name='lastName'
@@ -51,7 +61,7 @@ export const FormWrap = () => {
                             <small className="form-text text-danger">{errors.lastName}</small>
                         )}
                     </div>
-                    <div className="form-group">
+                    <div className="form-group w-100">
                         <label htmlFor='phoneExampleInput'>Phone</label>
                         <Field
                             name='phone'
@@ -62,14 +72,14 @@ export const FormWrap = () => {
                             <smal className="form-text text-danger">{errors.phone}</smal>
                         )}
                     </div>
-                    <div className="form-group">
+                    <div className="form-group w-100">
                         <label htmlFor='genderExampleInput'>Gender</label>
                         <Field
                             name='gender'
                             as="select"
-                            className="form-control"
+                            className="form-control form-control-select"
                             id='genderExampleInput'>
-                            <option value="">Select</option>
+                            <option value="">Select your gender</option>
                             <option value="Men">Men</option>
                             <option value="Woman">Woman</option>
                         </Field>
@@ -77,7 +87,7 @@ export const FormWrap = () => {
                             <smal className="form-text text-danger">{errors.gender}</smal>
                         )}
                     </div>
-                    <div className="form-group">
+                    <div className="form-group w-100">
                         <label htmlFor='ageExampleInput'>Age</label>
                         <Field
                             name='age'
@@ -88,27 +98,6 @@ export const FormWrap = () => {
                             <small className="form-text text-danger">{errors.age}</small>
                         )}
                     </div>
-                    {/*{*/}
-                    {/*    listInputs.map(({name, title, type}, i) => {*/}
-                    {/*        return (*/}
-                    {/*            <div className="form-group" key={name + i}>*/}
-                    {/*                <label htmlFor={`${name}ExampleInput`}>{title}</label>*/}
-                    {/*                <Field*/}
-                    {/*                    style={{color: 'red'}}*/}
-                    {/*                    name={name}*/}
-                    {/*                    type={type}*/}
-                    {/*                    className="form-control"*/}
-                    {/*                    id={`${name}ExampleInput`}/>*/}
-                    {/*                {errors.title && touched.title && (*/}
-                    {/*                    <span style={{ color: 'red' }}>{errors.title}</span>*/}
-                    {/*                )}*/}
-                    {/*                <small className="form-text text-muted">*/}
-                    {/*                    Enter yours {title}*/}
-                    {/*                </small>*/}
-                    {/*            </div>*/}
-                    {/*        )*/}
-                    {/*    })*/}
-                    {/*}*/}
                     <Button/>
                 </Form>
             )}

@@ -1,14 +1,8 @@
 import React, {Fragment} from 'react';
+import './index.scss'
 
-export const Button = () => {
-    // function handleClick (ev){
-    //     ev.preventDefault();
-    //     console.log('Submit form');
-    // }
-
-    return (
-        <Fragment>
-            <button  type="submit" id='btnSubmit' className=" btn btn-primary">Submit</button>
-        </Fragment>
-    );
-};
+export const Button = () => (
+    <Fragment>
+        <button type="submit" id='btnSubmit' className="btn w-100 text-white btn-submit">Submit</button>
+    </Fragment>
+);
