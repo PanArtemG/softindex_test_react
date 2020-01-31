@@ -8,7 +8,7 @@ export const Button = () => {
 
     return (
         <Fragment>
-            <button onClick={handleClick} type="submit" id='btnSubmit' className=" btn btn-primary">Submit</button>
+            <button  type="submit" id='btnSubmit' className=" btn btn-primary">Submit</button>
         </Fragment>
     );
 };

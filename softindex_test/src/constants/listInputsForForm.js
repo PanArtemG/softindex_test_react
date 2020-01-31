@@ -1,22 +1,27 @@
 export const listInputs = [
     {
         title: 'First Name',
-        type: 'text'
+        type: 'text',
+        name : 'firstName'
     },
     {
         title: 'Last Name',
-        type: 'text'
+        type: 'text',
+        name : 'lastName'
     },
     {
         title: 'Phone',
-        type: 'tel'
+        type: 'tel',
+        name : 'phone'
     },
     {
         title: 'Gender',
-        type: 'text'
+        type: 'text',
+        name : 'gender'
     },
     {
         title: 'Age',
-        type: 'number'
+        type: 'number',
+        name : 'age'
     },
 ];

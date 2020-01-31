@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
+import {Field} from 'formik';
 
-export const Input = ({title, type}) => {
+export const Input = ({title, type, name}) => {
     const [valueInput, setValueInput] = useState('');
     function getValue (ev){
         setValueInput(ev.target.value);
@@ -9,8 +10,8 @@ export const Input = ({title, type}) => {
 
     return (
         <div className="form-group">
-            <label htmlFor="exampleInputEmail1">{title}</label>
-            <input name={title} type={type} onChange={getValue} value={valueInput} className="form-control" id={`exampleInput${title}`}/>
+            <label htmlFor={`${name}ExampleInput`}>{title}</label>
+            <Field name={name} type={type} onChange={getValue} value={valueInput} className="form-control" id={`${name}ExampleInput`}/>
             <small className="form-text text-muted">
                 Enter yours {title}
             </small>

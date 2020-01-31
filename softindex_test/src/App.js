@@ -1,11 +1,10 @@
 import React from 'react';
-import {Form} from "./components/";
+import {FormWrap} from "./components/";
 
 function App() {
     return (
         <div className="container">
-            <h1>START</h1>
-            <Form/>
+            <FormWrap/>
         </div>
     );
 }

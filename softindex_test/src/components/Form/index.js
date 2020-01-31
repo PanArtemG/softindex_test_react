@@ -1,21 +1,45 @@
 import React from 'react';
+import {Formik, Form, Field} from 'formik';
+import * as yup from 'yup'
 
-import {listInputs} from '../../constants/listInputsForForm.js'
 import {Input, Button} from "../index";
+import {listInputs, DB} from '../../constants'
 
-export const Form = () => {
+
+export const FormWrap = () => {
+
+    const submit = values => {
+            DB.push(values);
+            console.log(DB);
+            console.log(values);
+    };
+
+
     return (
-        <form>
+        <div>
             <h1>FORM</h1>
-            {
-                listInputs.map((input, i) => {
-                    console.log(input);
-                    return (
-                        <Input {...input} key={input.title + i }/>
-                    )
-                })
-            }
-            <Button/>
-        </form>
-    );
+            <Formik
+                initialValues={{}}
+                onSubmit={ values => submit(values) }
+            >
+                <Form>
+                    {
+                        listInputs.map((input, i) => {
+                            return (
+                                <div className="form-group" key={input + i}>
+                                    <label htmlFor={`${input.name}ExampleInput`}>{input.title}</label>
+                                    <Field name={input.name} type={input.type} className="form-control"
+                                           id={`${input.name}ExampleInput`}/>
+                                    <small className="form-text text-muted">
+                                        Enter yours {input.title}
+                                    </small>
+                                </div>
+                            )
+                        })
+                    }
+                    <Button/>
+                </Form>
+            </Formik>
+        </div>
+    )
 };
