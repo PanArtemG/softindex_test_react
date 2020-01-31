@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
 
 export const Button = () => {
-    function handleClick (ev){
-        ev.preventDefault();
-        console.log('Submit form');
-    }
+    // function handleClick (ev){
+    //     ev.preventDefault();
+    //     console.log('Submit form');
+    // }
 
     return (
         <Fragment>
