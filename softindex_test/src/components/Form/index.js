@@ -1,20 +1,20 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
 import {Formik, Form, Field} from 'formik';
 
 import {Button} from "../index";
-import {DB} from '../../constants'
 import {validationSchema} from '../../shema'
 
 import './index.scss'
+import {list} from "../../services/list/actions";
 
 export const FormBlock = () => {
 
+    const dispatch = useDispatch();
 
     const submit = values => {
-        DB.push(values);
-        // console.log(DB);
-        const json = JSON.stringify(DB);
-        localStorage.setItem('DataBase', json)
+        dispatch(list.add(values));
+        // dispatch(list.update())
     };
 
     const resetForm = () => document.getElementById("exampleForm").reset();
@@ -25,7 +25,7 @@ export const FormBlock = () => {
                 firstName: '',
                 lastName: 'Pan',
                 phone: '777 77 777',
-                gender: 'Men',
+                gender: 'man',
                 age: 30
             }}
             onSubmit={(values, actions) => {
@@ -37,8 +37,9 @@ export const FormBlock = () => {
         >
             {({errors, touched}) => (
 
-                <Form id='exampleForm' className='form-wrap w-50 p-3 d-flex flex-md-column justify-content-center align-items-center text-center'>
-                    <h1 className='mb-5' >Welcome!</h1>
+                <Form id='exampleForm'
+                      className='form-wrap w-50 p-3 d-flex flex-md-column justify-content-center align-items-center text-center'>
+                    <h1 className='mb-5'>Welcome!</h1>
                     <div className="form-group w-100">
                         <label htmlFor='firstNameExampleInput'>First Name</label>
                         <Field
@@ -80,8 +81,8 @@ export const FormBlock = () => {
                             className="form-control form-control-select"
                             id='genderExampleInput'>
                             <option value="">Select your gender</option>
-                            <option value="Men">Men</option>
-                            <option value="Woman">Woman</option>
+                            <option value="man">man</option>
+                            <option value="woman">woman</option>
                         </Field>
                         {errors.gender && touched.gender && (
                             <smal className="form-text text-danger">{errors.gender}</smal>

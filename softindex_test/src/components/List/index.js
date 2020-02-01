@@ -1,45 +1,35 @@
 import React, {useEffect} from 'react';
-import {DB} from '../../constants'
+import {useDispatch, useSelector} from 'react-redux';
+import {listSelectors} from "../../services/globalSelectors";
+import {list} from "../../services/list/actions";
+
+import './index.scss'
+import ListItem from "../ListItem";
 
 export const List = () => {
+    const dispatch = useDispatch();
 
+    const data = useSelector(listSelectors.list);
+    const inputValue = ''
+    //сюда нужно вводить значение инпута
+    const newData = data.filter(el => el.firstName === inputValue)
     useEffect(() => {
-        console.log(DB)
-    }, DB);
+        dispatch(list.update());
+    }, []);
 
-    const loadDB = () => {
-        const data = localStorage.getItem('DataBase');
-        if (data) {
-            const storageBD = JSON.parse(data);
-            console.log(storageBD);
-            storageBD.forEach(el => {
-                DB.push(el)
-            });
-            console.log(DB)
-        }
-    };
-
-    loadDB();
 
     return (
-        <div className='w-50 p-3 d-flex flex-md-column align-items-center justify-content-center '>
+        <div className='w-50 p-3 d-flex flex-md-column align-items-center justify-content-center text-black-50 scrollbar scrollbar-lady-lips'>
             <h1 className='mb-5'>LIST</h1>
-            {
-                DB.length >= 1
-                    ?
-                    DB.map(el => {
-                        return (
-                            <ul>
-                                <li>{el.firstName}</li>
-                                <li>{el.lastName}</li>
-                                <li>{el.phone}</li>
-                                <li>{el.gender}</li>
-                                <li>{el.age}</li>
-                            </ul>
-                        )
-                    })
-                    : <h1>EMPTY</h1>
-            }
+            <div className='wrap-list w-100 d-flex flex-wrap align-items-center justify-content-center force-overflow scrollbar scrollbar-near-moon'>
+                {
+                    data.length >= 1
+                        ?
+                        data.map((item, i) => <ListItem {...item}/>)
+                        :
+                        <h1>EMPTY</h1>
+                }
+            </div>
         </div>
     );
 };

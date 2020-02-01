@@ -14,9 +14,9 @@ export const validationSchema = yup.object().shape({
         .string()
         .min(10, MESSAGES_ERROR.PHONE_LENGTH_ERROR)
         .required(MESSAGES_ERROR.PHONE_EMPTY_ERROR),
-    // gender: yup
-    //     .string()
-    //     .required(MESSAGES_ERROR.GENDER_EMPTY_ERROR),
+    gender: yup
+        .string()
+        .required(MESSAGES_ERROR.GENDER_EMPTY_ERROR),
     age: yup
         .number()
         .min(18, MESSAGES_ERROR.AGE_MIN_VALUE_ERROR)
