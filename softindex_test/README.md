@@ -1,3 +1,13 @@
+##softindex_test_react
+
+SPA - которое принимает данные пользователя, затем сохраняет их в LocalStorage и отображает. 
+Так же можно сортировать сохранненых пользователей по таким категориям:
+- имя;
+- фамилия;
+- возраст;
+- пол.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
