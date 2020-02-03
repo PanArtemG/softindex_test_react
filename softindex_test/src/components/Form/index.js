@@ -1,45 +1,38 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 import {Formik, Form, Field} from 'formik';
-
-import {Button} from "../index";
 import {validationSchema} from '../../shema'
+import {Button} from "../index";
+import {list} from "../../services/list/actions";
 
 import './index.scss'
-import {list} from "../../services/list/actions";
 
 export const FormBlock = () => {
 
     const dispatch = useDispatch();
-
-    const submit = values => {
-        dispatch(list.add(values));
-    };
-
-    const resetForm = () => document.getElementById("exampleForm").reset();
+    const submit = values => dispatch(list.add(values));
 
     return (
         <Formik
             initialValues={{
                 _id: '',
                 firstName: '',
-                lastName: 'Pan',
-                phone: '777 77 777',
-                gender: 'man',
-                age: 30
+                lastName: '',
+                phone: '',
+                gender: '',
+                age: ''
             }}
             onSubmit={(values, actions) => {
                 values._id = `${Date.now()}`;
                 submit(values);
-                resetForm()
+                actions.resetForm();
             }}
             validationSchema={validationSchema}
-
         >
             {({errors, touched}) => (
-
-                <Form id='exampleForm'
-                      className='form-wrap w-50 p-5 d-flex flex-md-column justify-content-between align-items-center text-center'>
+                <Form
+                    id='exampleForm'
+                    className='form-wrap w-50 p-5 d-flex flex-md-column justify-content-between align-items-center text-center'>
                     <h1 className='mb-5'>Welcome!</h1>
                     <div className='w-75'>
                         <div className="form-group w-100">
@@ -72,7 +65,7 @@ export const FormBlock = () => {
                                 className="form-control"
                                 id='phoneExampleInput'/>
                             {errors.phone && touched.phone && (
-                                <smal className="form-text text-danger">{errors.phone}</smal>
+                                <small className="form-text text-danger">{errors.phone}</small>
                             )}
                         </div>
                         <div className="form-group w-100">
@@ -87,7 +80,7 @@ export const FormBlock = () => {
                                 <option value="woman">woman</option>
                             </Field>
                             {errors.gender && touched.gender && (
-                                <smal className="form-text text-danger">{errors.gender}</smal>
+                                <small className="form-text text-danger">{errors.gender}</small>
                             )}
                         </div>
                         <div className="form-group w-100">

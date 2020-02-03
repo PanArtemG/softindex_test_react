@@ -1,17 +1,26 @@
 import React from 'react';
-import {Field} from "formik";
+import {useDispatch} from "react-redux";
+import {list} from "../../services/list/actions";
 
-export const Select = () => (
-    <div className="form-group">
-        <label htmlFor='genderExampleInput'>Gender</label>
-        <Field
-            name='gender'
-            as="select"
-            className="form-control"
-            id='genderExampleInput'>
-            <option value="">Select your gender</option>
-            <option value="Men">Men</option>
-            <option value="Woman">Woman</option>
-        </Field>
-    </div>
-);
+import './index.scss'
+
+export const Select = () => {
+    const dispatch = useDispatch();
+    const getValue = category => dispatch(list.sort(category));
+
+    return (
+        <div className="wrap-sort d-flex w-75 align-items-center mb-5">
+            <select
+                onChange={ev => getValue(ev.target.value)}
+                name='sort'
+                className="form-control"
+            >
+                <option value="reset">Select category</option>
+                <option value="firstName">Fist name</option>
+                <option value="lastName">Last Name</option>
+                <option value="gender">Gender</option>
+                <option value="age">Age</option>
+            </select>
+        </div>
+    )
+};

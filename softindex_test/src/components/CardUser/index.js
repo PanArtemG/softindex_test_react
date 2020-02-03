@@ -4,7 +4,7 @@ import {list} from "../../services/list/actions";
 
 import './index.scss'
 
-const CardUser = ({_id, firstName, lastName, phone, gender, age}) => {
+export const CardUser = ({_id, firstName, lastName, phone, gender, age}) => {
     const dispatch = useDispatch();
     const removeData = id => dispatch(list.remove(id));
 
@@ -27,5 +27,3 @@ const CardUser = ({_id, firstName, lastName, phone, gender, age}) => {
         </div>
     );
 };
-
-export default CardUser;

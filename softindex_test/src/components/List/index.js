@@ -2,17 +2,13 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {listSelectors} from "../../services/globalSelectors";
 import {list} from "../../services/list/actions";
-import CardUser from "../CardUser";
+import {CardUser, Select} from '../index.js'
 
-import './index.scss'
+import './index.scss';
 
 export const List = () => {
     const data = useSelector(listSelectors.list);
     const dispatch = useDispatch();
-
-    // const inputValue = ''
-    // //сюда нужно вводить значение инпута
-    // const newData = data.filter(el => el.firstName === inputValue)
 
     useEffect(() => {
         dispatch(list.update());
@@ -27,9 +23,16 @@ export const List = () => {
                 {
                     !!data.length
                         ?
+                        <Select/>
+                        :
+                        null
+                }
+                {
+                    !!data.length
+                        ?
                         data.map((item, i) => <CardUser key={item._id + i} {...item}/>)
                         :
-                        <h1>EMPTY</h1>
+                        <h1>Fill the form >>></h1>
                 }
             </div>
         </div>
