@@ -1,8 +1,8 @@
-import {createStore, compose, combineReducers} from 'redux'
-import {listReducer} from './list/reduser'
+import {createStore, compose, combineReducers} from 'redux';
+import {listReducer} from './list/reduser';
 
 
-const rootReducer =combineReducers({
+const rootReducer = combineReducers({
     list: listReducer
 });
 

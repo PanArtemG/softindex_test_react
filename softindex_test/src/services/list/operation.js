@@ -1,7 +1,6 @@
 const key = 'DataBase';
 
 export const loadStorage = () => {
-    console.log('LOAD STORAGE');
     let storageDB = localStorage.getItem(key);
     const data = [];
     if (!!storageDB) {
@@ -14,18 +13,15 @@ export const loadStorage = () => {
 };
 
 export const updateDataStorage = values => {
-    console.log('UPDATE');
     const data = loadStorage();
     if (data) {
         data.push(values);
         const updateData = JSON.stringify(data);
-        localStorage.setItem('DataBase', updateData);
-        console.log('ДОБАВИЛО');
+        localStorage.setItem(key, updateData);
     }
 };
 
-export const removeUserStorage = (id) => {
-    console.log('REMOVE CARD');
+export const removeUserStorage = id => {
     let storageDB = localStorage.getItem(key);
     if (storageDB) {
         storageDB = JSON.parse(storageDB);
@@ -34,7 +30,6 @@ export const removeUserStorage = (id) => {
         });
         storageDB = JSON.stringify(storageDB);
         localStorage.setItem(key, storageDB);
-        console.log(storageDB);
     }
     return loadStorage()
 };
