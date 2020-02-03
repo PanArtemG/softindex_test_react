@@ -14,7 +14,6 @@ export const FormBlock = () => {
 
     const submit = values => {
         dispatch(list.add(values));
-        // dispatch(list.update())
     };
 
     const resetForm = () => document.getElementById("exampleForm").reset();
@@ -22,6 +21,7 @@ export const FormBlock = () => {
     return (
         <Formik
             initialValues={{
+                _id: '',
                 firstName: '',
                 lastName: 'Pan',
                 phone: '777 77 777',
@@ -29,6 +29,7 @@ export const FormBlock = () => {
                 age: 30
             }}
             onSubmit={(values, actions) => {
+                values._id = `${Date.now()}`;
                 submit(values);
                 resetForm()
             }}

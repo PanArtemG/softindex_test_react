@@ -1,10 +1,7 @@
 .form-wrap {
-  //background-image: url("../../../public/static/image/bg.png");
-
   color: #ffffff;
   background-color:rgba(16,23,47, .2);
 }
-
 
 .form-control, .form-control:focus, .form-control:active {
   border: none;
@@ -15,10 +12,6 @@
   border-radius: 0;
 }
 
-.form-control:focus {
-
-}
-
 .form-control-select option {
-  color: #616983;
+  background-color: #616983;
 }

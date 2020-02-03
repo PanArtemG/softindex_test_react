@@ -5,12 +5,27 @@ export const listUpdate = () => {
     return loadStorage()
 };
 
-const loadStorage = () => {
+export const removeUserStorage = (id) => {
+    let storageDB = localStorage.getItem(key);
+
+    if (storageDB) {
+        storageDB = JSON.parse(storageDB);
+        storageDB = storageDB.filter(el => {
+            return el._id !== id
+        });
+        storageDB = JSON.stringify(storageDB);
+        localStorage.setItem(key, storageDB);
+        console.log(storageDB);
+    }
+    return loadStorage()
+};
+
+export const loadStorage = () => {
     console.log('LOAD STORAGE');
     let storageDB = localStorage.getItem(key);
     const data = [];
-
-    if (storageDB) {
+    console.log(storageDB);
+    if (storageDB.length > 0 ) {
         storageDB = JSON.parse(storageDB);
         storageDB.forEach(el => {
             data.push(el);
